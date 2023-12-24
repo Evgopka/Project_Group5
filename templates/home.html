@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная - CrossAndra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('../static/fon4.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .welcome-message {
+            text-align: center;
+            font-size: 2em; /* Увеличиваем размер шрифта */
+            color: #fff; /* Меняем цвет текста, если нужно */
+            margin-top: 50px; /* Добавляем отступ сверху */
+            text-shadow: 2px 2px 4px #000; /* Добавляем тень для лучшей читаемости на фоне */
+        }
+        .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Изменено на space-between для равномерного распределения */
+    margin-bottom: -10px; /* Убираем лишний отступ снизу */
+}
+
+.flower {
+    width: calc(33.333% - 20px); /* Подгоняем ширину, чтобы уместить 3 на линию */
+    margin: 10px;
+    background: #fff;
+    border: 4px solid #5c8a8a; /* Добавляем рамку здесь */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Обрезаем все выходящее за рамки */
+    display: flex; /* Для вертикального выравнивания */
+    flex-direction: column; /* Элементы идут друг за другом вертикально */
+    box-sizing: border-box;
+}
+
+        .flower img {
+    max-width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 450px; /* Установите высоту, которая соответствует вашему дизайну */
+    object-fit: cover;
+}
+
+.flower img:hover {
+    transform: scale(1.03);
+}
+
+.flower-price {
+    margin-top: auto; /* Автоматический отступ сверху, чтобы цена была внизу */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em; /* Немного увеличиваем шрифт */
+    font-family: 'Dancing Script', cursive;
+}
+        .slogan {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            font-family: 'Dancing Script', cursive; /* Применяем цветочный шрифт */
+        }
+
+        .slogan h1 {
+            font-size: 2.5em; /* Увеличиваем размер шрифта */
+            color: #5c8a8a; /* Цвет шрифта */
+        }
+
+        .ca-icon {
+            position: absolute;
+            top: -12px; /* Поднимаем иконку выше */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('../static/logotip.png') no-repeat center center;
+            background-size: contain;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <!-- Навигационные кнопки -->
+        <a href="/">Главная</a>
+        <a href="/how-to-order">Как заказать?</a>
+        <a href="/about">О нас</a>
+    </div>
+
+    <div class="slogan">
+        <div class="ca-icon"></div> <!-- Блок для иконки или логотипа -->
+        <h1>Добро пожаловать в CrossAndra!</h1>
+    </div>
+
+        <div class="gallery">
+    <!-- Обернуть изображение в ссылку, которая ведет на страницу профиля цветка -->
+<div class="flower">
+    <a href="{{ url_for('flower_profile', flower_id=1) }}">
+        <img src="{{ url_for('static', filename='images/flowers/flower1.jpg') }}" alt="Цветок 1">
+    </a>
+    <div class="flower-price">1500 руб.</div>
+</div>
+<div class="flower">
+    <a href="{{ url_for('flower_profile', flower_id=2) }}">
+        <img src="{{ url_for('static', filename='images/flowers/flower2.jpg') }}" alt="Цветок 2">
+    </a>
+    <div class="flower-price">2500 руб.</div>
+</div>
+<div class="flower">
+    <a href="{{ url_for('flower_profile', flower_id=3) }}">
+        <img src="{{ url_for('static', filename='images/flowers/flower3.jpg') }}" alt="Цветок 3">
+    </a>
+    <div class="flower-price">1300 руб.</div>
+</div>
+            <div class="flower">
+        <a href="{{ url_for('flower_profile', flower_id=4) }}">
+            <img src="{{ url_for('static', filename='images/flowers/flower4.jpg') }}" alt="Цветок 4">
+        </a>
+        <div class="flower-price">2000 руб.</div>
+    </div>
+    <div class="flower">
+        <a href="{{ url_for('flower_profile', flower_id=5) }}">
+            <img src="{{ url_for('static', filename='images/flowers/flower5.jpg') }}" alt="Цветок 5">
+        </a>
+        <div class="flower-price">1800 руб.</div>
+    </div>
+    <div class="flower">
+        <a href="{{ url_for('flower_profile', flower_id=6) }}">
+            <img src="{{ url_for('static', filename='images/flowers/flower6.jpg') }}" alt="Цветок 6">
+        </a>
+        <div class="flower-price">2200 руб.</div>
+    </div>
+</div>
+</div>
+        </div>
+</body>
+</html>

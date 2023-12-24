@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>О нас - CrossAndra</title>
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive;
+            margin: 0;
+            padding: 0;
+            background: url('../static/fon2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .photo-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .photo-row img {
+            width: calc(33.333% - 20px);
+            margin: 10px;
+            border-radius: 10px; /* Если хотите скругленные углы */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Для небольшой тени вокруг фотографий */
+        }
+.info-card {
+    width: calc(33.333% - 20px); /* Ширина карточки */
+    height: 300px; /* Фиксированная высота карточки */
+    margin: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card img {
+    width: 100%; /* Ширина изображения равна ширине карточки */
+    height: 70%; /* Процент высоты карточки, выделенный под изображение */
+    object-fit: cover; /* Обрезка изображения для заполнения пространства */
+}
+
+.info-card p {
+    height: 30%; /* Процент высоты карточки, выделенный под текст */
+    margin: 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+}
+
+/* Медиа запрос для адаптивности */
+@media (max-width: 600px) {
+    .info-card {
+        width: 100%; /* На маленьких экранах карточка занимает всю ширину */
+    }
+}
+    </style>
+</head>
+<body>
+<div class="header">
+        <a href="/">Главная</a>
+        <a href="/how-to-order">Как заказать?</a>
+        <a href="/about">О нас</a>
+    </div>
+    <div class="container">
+        <h1>Почему стоит выбирать нас?</h1>
+        <p>
+            В нашем магазине цветов вы найдете самые свежие и красивые букеты, которые собираются нашими опытными флористами. Мы предоставляем персональный подход к каждому клиенту и гарантируем, что наши букеты принесут радость и улыбку.
+        </p>
+        <p>
+            Наша главная гарантия - это улыбка на лице каждого, кто получает наши букеты. Мы заботимся о том, чтобы каждый заказ был выполнен на высшем уровне и доставлен вовремя.
+        </p>
+    </div>
+<div class="container">
+    <h1>О нас</h1>
+
+        <div class="photo-row">
+            <div class="info-card">
+                <img src="../static/place.png" alt="Местоположение">
+                <p>Местоположение</p>
+            </div>
+            <div class="info-card">
+                <img src="../static/team.jpg" alt="Команда">
+                <p>Команда</p>
+            </div>
+            <div class="info-card">
+                <img src="../static/hours.jpg" alt="Часы работы">
+                <p>Часы работы</p>
+            </div>
+        </div>
+
+    <p>Здесь вы можете добавить информацию о вашем магазине, команде и часах работы.</p>
+</div>
+</body>
+</html>

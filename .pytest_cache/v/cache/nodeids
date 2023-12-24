@@ -1,0 +1,7 @@
+[
+  "test_app.py::FlaskTestCase::test_about_page",
+  "test_app.py::FlaskTestCase::test_flower_profile",
+  "test_app.py::FlaskTestCase::test_flower_profile_not_found",
+  "test_app.py::FlaskTestCase::test_home_page",
+  "test_app.py::FlaskTestCase::test_how_to_order_page"
+]

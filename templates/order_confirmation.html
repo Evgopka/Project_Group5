@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение заказа - CrossAndra</title>
+    <style>
+        html, body {
+            height: 100%; /* Устанавливаем высоту для html и body */
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: #f4f4f4;
+            background-image: url('../static/fon4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 500px; /* Уменьшение максимальной ширины */
+            margin: 50px auto; /* Увеличение отступа сверху и центрирование */
+            padding: 30px; /* Увеличение внутренних отступов */
+            background: white;
+            border-radius: 10px; /* Скругление углов */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Добавление тени для глубины */
+            border-left: 4px solid #5c8a8a; /* Акцентная линия слева */
+        }
+        h1 {
+            color: #5c8a8a;
+            font-size: 1.5em;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .order-details {
+            background: #e7f6f2; /* Более светлый фон для раздела деталей заказа */
+            padding: 20px; /* Паддинг для раздела */
+            border-radius: 5px; /* Скругление углов раздела */
+            margin-bottom: 20px; /* Отступ снизу раздела */
+        }
+
+        .order-details p {
+            margin: 0 0 10px 0; /* Отступы для абзацев */
+            line-height: 1.6; /* Высота строки для лучшей читаемости */
+        }
+        .button {
+            width: auto; /* Автоматическая ширина кнопки */
+            padding: 10px 20px; /* Паддинг для кнопки */
+            background: #5c8a8a; /* Фон кнопки */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px; /* Скругление углов кнопки */
+            display: inline-block; /* Для правильного отображения паддингов */
+            margin-top: 20px; /* Отступ сверху для кнопки */
+        }
+        .button:hover {
+            background: #4a7575;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Подтверждение заказа</h1>
+        <div class="order-details">
+            <p>Спасибо за ваш заказ, <strong>{{ flower_name }}</strong>!</p>
+            <p>Номер вашего заказа: <strong>{{ order_number }}</strong></p>
+            <p>Количество: <strong>{{ quantity }}</strong></p>
+            <p>Ваш комментарий: <strong>{{ comment }}</strong></p>
+            <p>Общая стоимость: <strong>{{ total_price }}</strong></p>
+            <p>Ожидаемое время доставки: <strong>{{ delivery_time }}</strong></p>
+            <p>Ваш заказ соберет: <strong>Андрей Иванов</strong></p>
+            <h2>Информация о доставке:</h2>
+            <p>Адрес: <strong>{{ address }}</strong>, квартира: <strong>{{ apartment }}</strong>, этаж: <strong>{{ floor }}</strong>, подъезд: <strong>{{ entrance }}</strong></p>
+        </div>
+        <a href="{{ url_for('home') }}" class="button">Вернуться на главную страницу</a>
+    </div>
+</body>
+</html>

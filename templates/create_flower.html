@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создай свой букет - CrossAndra</title>
+    <style>
+        /* Ваши стили */
+        .flower-selector, .bouquet-viewer, .total-price, .order-button {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .flower {
+            cursor: pointer;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .flower img {
+            height: 50px; /* Высота изображения цветка */
+            width: auto;
+        }
+        .selected {
+            border-color: #5c8a8a;
+        }
+        /* Другие стили */
+    </style>
+</head>
+<body>
+    <div class="flower-selector">
+        <h2>Выберите цветы для букета:</h2>
+        <div class="flower" onclick="selectFlower('Роза', 100)">
+            <img src="../static/rosa.jpg" alt="Роза"><br>Роза (100 руб.)
+        </div>
+        <div class="flower" onclick="selectFlower('Тюльпан', 150)">
+            <img src="../static/tulpan.jpg" alt="Тюльпан"><br>Тюльпан (150 руб.)
+        </div>
+        <div class="flower" onclick="selectFlower('Пионы', 120)">
+            <img src="../static/pion.jpg" alt="Пионы"><br>Пионы (120 руб.)
+        </div>
+        <div class="flower" onclick="selectFlower('Гвоздика', 130)">
+            <img src="../static/gvozd.jpg" alt="Гвоздика"><br>Гвоздика (130 руб.)
+        </div>
+        <div class="flower" onclick="selectFlower('Лилия', 200)">
+            <img src="../static/lilia.jpg" alt="Лилия"><br>Лилия (200 руб.)
+        </div>
+        <div class="flower" onclick="selectFlower('Красивая обёртка', 350)">
+            <img src="../static/obertka.jpg" alt="Красивая обёртка"><br>Красивая обёртка (350 руб.)
+        </div>
+    </div>
+    <div class="bouquet-viewer">
+        <h2>Ваш букет:</h2>
+        <div id="bouquet"></div>
+    </div>
+    <div class="total-price">
+        Общая стоимость: <span id="total-price">0</span> руб.
+    </div>
+    <div class="order-button">
+        <button onclick="orderBouquet()">Заказать букет</button>
+    </div>
+
+    <script>
+        var bouquet = [];
+        var totalPrice = 0;
+
+        function selectFlower(flower, price) {
+            bouquet.push({ flower, price });
+            updateBouquetView();
+            updateTotalPrice(price);
+        }
+
+        function updateBouquetView() {
+            var bouquetDiv = document.getElementById('bouquet');
+            bouquetDiv.innerHTML = '';
+            bouquet.forEach(function(item) {
+                var flowerDiv = document.createElement('div');
+                flowerDiv.className = 'selected flower';
+                flowerDiv.innerText = item.flower;
+                bouquetDiv.appendChild(flowerDiv);
+            });
+        }
+
+        function updateTotalPrice(price) {
+            totalPrice += price;
+            document.getElementById('total-price').innerText = totalPrice;
+        }
+
+        function orderBouquet() {
+            localStorage.setItem('bouquet', JSON.stringify(bouquet));
+            localStorage.setItem('totalPrice', totalPrice.toString());
+            window.location.href = '/new_order_confirmation';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль букета - CrossAndra</title>
+<style>
+    body {
+        font-family: 'Dancing Script', cursive;
+        margin: 0;
+        padding: 0;
+        background: url('../static/fon4.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden; /* Добавлено для предотвращения выпадания float-элементов */
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #333;
+        margin-top: 20px;
+    }
+    .header {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    .header a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 5px 10px;
+    }
+    .flower-profile {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .flower-profile img {
+        max-width: 50%;
+        height: auto;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+    .description {
+        flex-grow: 1;
+        text-align: left;
+    }
+    .price, .delivery {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    /* Новые стили для формы заказа */
+    .order-form {
+            background: #fff; /* фон окна формы */
+            padding: 20px;
+            margin-top: 20px; /* отступ от картинки */
+            border-radius: 10px; /* скругление углов */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* тень для объемности */
+            border: 1px solid #ddd; /* тонкая граница вокруг формы */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="number"],
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px); /* вычитаем padding и border */
+            padding: 10px;
+            border: 2px solid #5c8a8a; /* цвет рамки */
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            background: #e7f6f2; /* фон при фокусировке */
+            border-color: #5c8a8a; /* цвет рамки при фокусировке */
+            outline: none;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background: #5c8a8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #4a7575;
+        }
+</style>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}">Главная</a>
+        <a href="{{ url_for('how_to_order') }}">Как заказать?</a>
+        <a href="{{ url_for('about') }}">О нас</a>
+    </div>
+    <div class="container">
+        <div class="flower-profile">
+            <img src="{{ url_for('static', filename='images/flowers/' + flower['image_filename']) }}" alt="{{ flower['name'] }}">
+            <div class="description">
+                <h1>{{ flower['name'] }}</h1>
+                <p>{{ flower['description'] }}</p>
+                <p class="price">Стоимость: {{ flower['price'] }}</p>
+                <p class="delivery">Сборка и доставка: {{ flower['delivery_time'] }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('place_order') }}" method="post">
+            <input type="hidden" name="flower_id" value="{{ flower['id'] }}">
+            <div class="form-group">
+                <label for="quantity">Количество:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="comment">Комментарий:</label>
+                <input type="text" id="comment" name="comment">
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес доставки:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="apartment">Квартира:</label>
+                <input type="text" id="apartment" name="apartment">
+            </div>
+            <div class="form-group">
+                <label for="floor">Этаж:</label>
+                <input type="number" id="floor" name="floor">
+            </div>
+            <div class="form-group">
+                <label for="entrance">Подъезд:</label>
+                <input type="number" id="entrance" name="entrance">
+            </div>
+            <button type="submit" class="button">Оформить заказ</button>
+        </form>
+    </div>
+</body>
+</html>
